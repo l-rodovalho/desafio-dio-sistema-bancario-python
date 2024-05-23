@@ -1,6 +1,4 @@
-def depositar(
-    saldo, extrato
-):  # acrescenta valor do depósito ao saldo e adiciona operação ao extrato
+def depositar(saldo, extrato):  # acrescenta valor do depósito ao saldo e adiciona operação ao extrato
 
     valor = float(input("Informe o valor do depósito desejado: "))
 
@@ -18,18 +16,12 @@ def depositar(
     return saldo, extrato
 
 
-def sacar(
-    *, saldo, extrato, numero_saques
-):  # retira valor do saldo e adiciona operação ao extrato
+def sacar(*, saldo, extrato, numero_saques):  # retira valor do saldo e adiciona operação ao extrato
 
     if saldo > 0:
 
         if numero_saques < 3:  # 3 é o número máximo de saques diários
-            valor = float(
-                input(
-                    f"Informe o valor do saque desejado - Saldo: R$ {saldo:.2f} - Limite: R$ 500.00 : "
-                )
-            )
+            valor = float(input(f"Informe o valor do saque desejado - Saldo: R$ {saldo:.2f} - Limite: R$ 500.00 : "))
 
             if valor > 0 and valor <= 500:  # 500 é o valor máximo de um saque
 
@@ -44,9 +36,7 @@ def sacar(
 
                     extrato += f"Saque de R$ {valor:.2f}\n"
 
-                    print(
-                        f"Saque de R$ {valor:.2f} realizado! Novo saldo: R$ {saldo:.2f}"
-                    )
+                    print(f"Saque de R$ {valor:.2f} realizado! Novo saldo: R$ {saldo:.2f}")
 
             else:
                 print("Valor limite de saque excedido!")
@@ -67,9 +57,7 @@ def exibir_extrato(saldo, *, extrato):
     print(extrato)
 
 
-def criar_usuario(
-    usuarios,
-):  # armazena os dados do cliente em um dicionário, e é adicionado a lista usuários
+def criar_usuario(usuarios):  # armazena os dados do cliente em um dicionário, e é adicionado a lista usuários
 
     nome = input("Nome: ")
 
@@ -86,18 +74,14 @@ def criar_usuario(
 
     endereco = input("Endereço (logradouro, número - bairro - cidade/UF): ")
 
-    usuarios.append(
-        {"nome": nome, "nascimento": nascimento, "cpf": cpf, "endereco": endereco}
-    )
+    usuarios.append({"nome": nome, "nascimento": nascimento, "cpf": cpf, "endereco": endereco})
 
     print("Cliente cadastrado com sucesso!")
 
     return usuarios
 
 
-def criar_conta(
-    contas, usuarios
-):  # contas armazenadas em um dicionário, que é adicionado a lista contas
+def criar_conta(contas, usuarios):  # contas armazenadas em um dicionário, que é adicionado a lista contas
 
     cpf = input("Digite o CPF do cliente (apenas números): ")
 
@@ -189,9 +173,7 @@ while True:
         saldo, extrato = depositar(saldo, extrato)
 
     elif opcao == "s":
-        saldo, extrato, numero_saques = sacar(
-            saldo=saldo, extrato=extrato, numero_saques=numero_saques
-        )
+        saldo, extrato, numero_saques = sacar(saldo=saldo, extrato=extrato, numero_saques=numero_saques)
 
     elif opcao == "e":
         exibir_extrato(saldo, extrato=extrato)
